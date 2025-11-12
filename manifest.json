@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Udemy Progress Helper",
+  "version": "1.2",
+  "description": "Mark Udemy sections and lectures as complete automatically.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Udemy Progress Helper"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.udemy.com/*",
+        "*://udemy.com/*",
+        "*://*.udemybusiness.com/*",
+        "*://gale.udemy.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "commands": {
+    "mark-all-sections": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Mark all sections complete on current course page"
+    }
+  }
+}
